@@ -1,4 +1,4 @@
-import { shigaUtils } from './index.js'
+import { shigaUtils } from './index'
 
 export const wait = (duration) => {
   return new Promise(resolve => setTimeout(() => resolve(), duration))

@@ -1,8 +1,29 @@
 {
   "name": "redux-shiga",
   "version": "0.1.0",
-  "main": "lib/index.js",
+  "main": [
+    "lib/index.js",
+    "lib/effects.js"
+  ],
   "license": "MIT",
   "repository": "git@github.com:MaxMEllon/redux-shiga.git",
-  "author": "MaxMEllon <maxmellon1994@gmail.com>"
+  "author": "MaxMEllon <maxmellon1994@gmail.com>",
+  "scripts": {
+    "build": "rollup --config rollup.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "@babel/preset-react": "^7.0.0-beta.51",
+    "rollup": "^0.60.7",
+    "rollup-plugin-babel": "^4.0.0-beta.5",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-npm": "^2.0.0",
+    "rollup-plugin-uglify": "^4.0.0"
+  }
 }
