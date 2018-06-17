@@ -13,12 +13,10 @@ const register = (type, asyncFunc) => {
 export default function createShigaMiddleware() {
   const middleware = ({ dispatch, getState }) => next => action => {
     shigaUtils = { dispatch, getState, next }
-    Object.keys(shigaFunctions).forEach(type => {
-      if (action.type === type) shigaFunctions[type](action.payload, next)
-    })
-    next(action)
+    const keys = Object.keys(shigaFunctions)
+    if (!keys.includes(action.type)) return next(action)
+    shigaFunctions[action.type](action.payload, next)
   }
-
   middleware.run = (shigas) => shigas(register)
   return middleware
 }
