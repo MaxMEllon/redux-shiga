@@ -1,15 +1,40 @@
 import axios from 'axios'
 
 import * as actions from '../actions'
-import { put, wait, tryCatch, select } from 'redux-shiga'
-
-const url = 'https://api.github.com/users/maxmellon'
+import {
+  dispatch,
+  getState,
+  put,
+  wait,
+  tryCatch,
+  select,
+  steps,
+  through,
+  END
+} from 'redux-shiga'
 
 export default function rootShiga(onAsync) {
-  onAsync(actions.fetchGithub.type, async () => {
-    await put(actions.loadingStart())
-    await wait(3000)
-    await tryCatch([() => axios.get(url), actions.successFetchGithub, actions.handleError])
-    await put(actions.loadingEnd())
+  onAsync(actions.fetchGithub1.type, steps([
+    through(actions.loadingStart()),
+    wait(1000),
+    tryCatch((url) => axios.get(url), [
+      actions.successFetchGithub,
+      actions.handleError,
+    ]),
+    through(actions.loadingEnd()),
+    END,
+  ]))
+
+  onAsync(actions.fetchGithub2.type, async (url) => {
+    dispatch(actions.loadingStart())
+    await wait(1000)()
+    try {
+      const result = await axios.get(url)
+      dispatch(actions.successFetchGithub(result))
+    } catch (err) {
+      dispatch(actions.handleError(err))
+    }
+    dispatch(actions.loadingEnd())
+    return await END()
   })
 }

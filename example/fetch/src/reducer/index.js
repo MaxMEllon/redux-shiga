@@ -11,6 +11,8 @@ export default function reducer(state, action) {
   switch (action.type) {
     case actions.successFetchGithub.type:
       return Object.assign({}, state, { github: action.payload.data })
+    case actions.reset.type:
+      return Object.assign({}, state, { github: null })
     case actions.handleError.type:
       window.alert(action.payload.message)
       return state

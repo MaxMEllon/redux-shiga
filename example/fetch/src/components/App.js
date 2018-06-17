@@ -2,11 +2,15 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux'
 
-import { fetchGithub } from '../actions'
+import { fetchGithub1, fetchGithub2, reset } from '../actions'
 
 class App extends React.Component {
   componentDidMount() {
-     this.props.fetchGithub()
+    this.props.fetchGithub1('https://api.github.com/users/maxmellon')
+    setTimeout(() => {
+      this.props.reset()
+      this.props.fetchGithub2('https://api.github.com/users/maxmellon')
+    }, 3000)
   }
 
   render() {
@@ -26,7 +30,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToActions = {
-  fetchGithub,
+  fetchGithub1,
+  fetchGithub2,
+  reset,
 }
 
 export default App |> connect(mapStateToProps, mapDispatchToActions) |> hot(module)

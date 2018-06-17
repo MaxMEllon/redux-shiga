@@ -4,7 +4,11 @@ const creator = (type) => {
   return fsa
 }
 
-export const fetchGithub = creator('fetch github')
+export const fetchGithub1 = creator('fetch github 1')
+export const fetchGithub2 = creator('fetch github 2')
+
+export const reset = creator('reset')
+
 export const successFetchGithub = creator('success fetch github')
 export const handleError = creator('handle error')
 
