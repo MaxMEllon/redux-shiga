@@ -33,6 +33,7 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
     "redux-shiga": "0.1.2"
   }
 }
