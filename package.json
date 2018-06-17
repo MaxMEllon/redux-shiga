@@ -1,6 +1,6 @@
 {
   "name": "redux-shiga",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/index.js",
   "license": "MIT",
   "repository": "git@github.com:MaxMEllon/redux-shiga.git",
@@ -20,7 +20,7 @@
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.0.1",
     "jest": "^23.1.0",
-    "redux-shiga": "^0.1.1",
+    "react-hot-loader": "^4.3.3",
     "regenerator-runtime": "^0.11.1",
     "rollup": "^0.60.7",
     "rollup-plugin-babel": "^4.0.0-beta.5",
