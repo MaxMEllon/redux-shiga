@@ -1,13 +1,9 @@
-import { put, tryCatch, wait, select } from './effects'
-
 const shigaFunctions = {}
 export let shigaUtils = {}
 
 const register = (type, asyncFunc) => {
   if (typeof type == null) throw new Error('shiga handler can not regist null or undefined type')
-  shigaFunctions[type] = (payload, next) => asyncFunc(payload).then(fsa => {
-    if (typeof fsa !== 'undefined') next(fsa)
-  })
+  shigaFunctions[type] = (payload, next) => asyncFunc(payload).then(res => next(res))
 }
 
 export default function createShigaMiddleware() {
@@ -21,9 +17,5 @@ export default function createShigaMiddleware() {
   return middleware
 }
 
-export {
-  put,
-  tryCatch,
-  wait,
-  select,
-}
+export const dispatch = fsa => Promise.resolve(shigaUtils.dispatch(fsa))
+export const getState = (mapState = state => state) => Promise.resolve(shigaUtils.getState())

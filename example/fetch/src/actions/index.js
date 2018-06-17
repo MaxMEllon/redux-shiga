@@ -5,6 +5,9 @@ const creator = (type) => {
 }
 
 export const fetchGithub = creator('fetch github')
+
+export const reset = creator('reset')
+
 export const successFetchGithub = creator('success fetch github')
 export const handleError = creator('handle error')
 

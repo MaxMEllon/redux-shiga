@@ -2,11 +2,11 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux'
 
-import { fetchGithub } from '../actions'
+import { fetchGithub, } from '../actions'
 
 class App extends React.Component {
   componentDidMount() {
-     this.props.fetchGithub()
+    this.props.fetchGithub('https://api.github.com/users/maxmellon')
   }
 
   render() {
