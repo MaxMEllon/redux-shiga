@@ -1,5 +1,3 @@
-import { dispatch, getState, put, tryCatch, wait, select, steps, through, END } from './effects'
-
 const shigaFunctions = {}
 export let shigaUtils = {}
 
@@ -19,14 +17,5 @@ export default function createShigaMiddleware() {
   return middleware
 }
 
-export {
-  dispatch,
-  getState,
-  put,
-  tryCatch,
-  wait,
-  select,
-  steps,
-  through,
-  END,
-}
+export const dispatch = fsa => Promise.resolve(shigaUtils.dispatch(fsa))
+export const getState = (mapState = state => state) => Promise.resolve(shigaUtils.getState())
