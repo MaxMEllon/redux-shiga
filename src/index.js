@@ -3,7 +3,7 @@ export let shigaUtils = {}
 
 const register = (type, asyncFunc) => {
   if (typeof type == null) throw new Error('shiga handler can not regist null or undefined type')
-  shigaFunctions[type] = (payload, next) => asyncFunc(payload).then(res => next(res))
+  shigaFunctions[type] = (payload, next) => asyncFunc(payload)
 }
 
 export default function createShigaMiddleware() {
