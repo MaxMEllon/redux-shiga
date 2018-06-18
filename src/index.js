@@ -3,7 +3,7 @@ export let shigaUtils = {}
 
 const register = (type, asyncFunc) => {
   if (typeof type == null) throw new Error('shiga handler can not regist null or undefined type')
-  shigaFunctions[type] = (payload, next) => asyncFunc(payload)
+  shigaFunctions[type] = (payload) => asyncFunc(payload)
 }
 
 export default function createShigaMiddleware() {
@@ -11,7 +11,8 @@ export default function createShigaMiddleware() {
     shigaUtils = { dispatch, getState, next }
     const keys = Object.keys(shigaFunctions)
     if (!keys.includes(action.type)) return next(action)
-    shigaFunctions[action.type](action.payload, next)
+    next(action)
+    shigaFunctions[action.type](action)
   }
   middleware.run = (shigas) => shigas(register)
   return middleware

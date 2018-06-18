@@ -28,7 +28,10 @@ describe('createShigaMiddleware', () => {
   it('handles Flux standard actions', (done) => {
     middleware.run((onAsync) => {
       onAsync('ACTION_TYPE', async (payload) => {
-        expect(payload).toEqual(1)
+        expect(payload).toEqual({
+          type: 'ACTION_TYPE',
+          payload: 1,
+        })
         done()
       })
       dispatch({ type: 'ACTION_TYPE', payload: 1 })
