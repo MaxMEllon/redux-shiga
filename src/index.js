@@ -19,4 +19,9 @@ export default function createShigaMiddleware() {
 }
 
 export const dispatch = fsa => Promise.resolve(shigaUtils.dispatch(fsa))
-export const getState = (mapState = state => state) => Promise.resolve(shigaUtils.getState())
+export const getState = (mapState = state => state) => {
+  if (typeof mapState !== 'function') {
+    throw new Error('A getState of shiga expected arguments as function')
+  }
+  return Promise.resolve(mapState(shigaUtils.getState()))
+}
