@@ -1,6 +1,6 @@
 {
   "name": "redux-shiga",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "lib/index.js",
   "license": "MIT",
   "repository": "git@github.com:MaxMEllon/redux-shiga.git",
