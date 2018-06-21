@@ -12,7 +12,9 @@ export default function createShigaMiddleware() {
     shigaUtils = { dispatch, getState, next }
     const keys = Object.keys(shigaFunctions)
     next(action)
-    if (keys.includes(action.type)) return shigaFunctions[action.type](action)
+    if (keys.includes(action.type)) {
+      return shigaFunctions[action.type](action).catch(err => console.error(err))
+    }
   }
   middleware.run = (shigas) => shigas(register)
   return middleware
